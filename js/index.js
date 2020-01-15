@@ -24,13 +24,25 @@ gradientLinks.forEach((e)=> e.addEventListener('click',  ()=> {
     e.style['-webkit-background-clip']='text'
 }))
 //prevent default for links on click
-gradientLinks.forEach((e)=>e.addEventListener('click',()=>console.log('prevented default')));
+gradientLinks.forEach((e)=>e.addEventListener('click',(e)=>e.preventDefault()));
 //make the bus honk
 let busHonk=document.querySelector('.intro img');
-busHonk.addEventListener('mouseover', ()=> {let audio=document.createElement('audio');
+busHonk.addEventListener('click', ()=> {let audio=document.createElement('audio');
 audio.setAttribute('autoplay', 'true');
 audio.src=('https://retired.sounddogs.com/previews/101/mp3/106439_SOUNDDOGS__bu.mp3');
 });
-//dragged image
-let dragged=document.querySelectorAll('img');
-// dragged.forEach()
+//no stealing images
+let doNotSteal=document.querySelectorAll('img');
+doNotSteal.forEach((e)=>e.addEventListener('mousedown', ()=>{e.style.filter='blur';}));
+//key down
+let keyDown=document.querySelector('body');
+keyDown.addEventListener('keydown', ()=>{document.body.style.backgroundColor='black'; alert('Why are you typing? ;-;')});
+//click copyright
+let copyright=document.querySelector('.footer p');
+copyright.addEventListener('click', ()=>copyright.style.color='red');
+//blur img on mouseover
+let blur=document.querySelectorAll('img');
+blur.forEach((e)=>e.addEventListener('mouseover', ()=>{e.style.filter='blur(5px)';}));
+//click button
+let btnClick=document.querySelectorAll('.btn');
+btnClick.forEach((e)=>e.addEventListener('click', ()=>e.style.backgroundColor='black'))
